@@ -1,0 +1,159 @@
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab
+$ git init
+Initialized empty Git repository in C:/Users/jaemilee/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab/.git/
+
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ nano numbers.py
+
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ python numbers.py
+Python was not found; run without arguments to install from the Microsoft Store, or disable this shortcut from Settings > Manage App Execution Aliases.
+
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ source activate learn-env
+(learn-env)
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ python numbers.py
+0
+1
+4
+9
+16
+25
+36
+49
+64
+81
+(learn-env)
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ git add numbers.py
+warning: in the working copy of 'numbers.py', LF will be replaced by CRLF the next time Git touches it
+(learn-env)
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ git commit -m "first commit in master for merge lab"
+[master (root-commit) f8cf8bd] first commit in master for merge lab
+ 1 file changed, 1 insertion(+)
+ create mode 100644 numbers.py
+(learn-env)
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ git branch cubes
+(learn-env)
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ git checkout cubes
+Switched to branch 'cubes'
+(learn-env)
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (cubes)
+$ nano numbers.py
+(learn-env)
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (cubes)
+$ git commit -"first commit in cubes for merge lab"
+error: unknown switch `f'
+usage: git commit [<options>] [--] <pathspec>...
+
+    -q, --quiet           suppress summary after successful commit
+    -v, --verbose         show diff in commit message template
+
+Commit message options
+    -F, --file <file>     read message from file
+    --author <author>     override author for commit
+    --date <date>         override date for commit
+    -m, --message <message>
+                          commit message
+    -c, --reedit-message <commit>
+                          reuse and edit message from specified commit
+    -C, --reuse-message <commit>
+                          reuse message from specified commit
+    --fixup [(amend|reword):]commit
+                          use autosquash formatted message to fixup or amend/reword specified commit
+    --squash <commit>     use autosquash formatted message to squash specified commit
+    --reset-author        the commit is authored by me now (used with -C/-c/--amend)
+    --trailer <trailer>   add custom trailer(s)
+    -s, --signoff         add a Signed-off-by trailer
+    -t, --template <file>
+                          use specified template file
+    -e, --edit            force edit of commit
+    --cleanup <mode>      how to strip spaces and #comments from message
+    --status              include status in commit message template
+    -S, --gpg-sign[=<key-id>]
+                          GPG sign commit
+
+Commit contents options
+    -a, --all             commit all changed files
+    -i, --include         add specified files to index for commit
+    --interactive         interactively add files
+    -p, --patch           interactively add changes
+    -o, --only            commit only specified files
+    -n, --no-verify       bypass pre-commit and commit-msg hooks
+    --dry-run             show what would be committed
+    --short               show status concisely
+    --branch              show branch information
+    --ahead-behind        compute full ahead/behind values
+    --porcelain           machine-readable output
+    --long                show status in long format (default)
+    -z, --null            terminate entries with NUL
+    --amend               amend previous commit
+    --no-post-rewrite     bypass post-rewrite hook
+    -u, --untracked-files[=<mode>]
+                          show untracked files, optional modes: all, normal, no. (Default: all)
+    --pathspec-from-file <file>
+                          read pathspec from file
+    --pathspec-file-nul   with --pathspec-from-file, pathspec elements are separated with NUL character
+
+(learn-env)
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (cubes)
+$ git commit -m "first commit in cubes for merge lab"
+On branch cubes
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   numbers.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(learn-env)
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (cubes)
+$ git checkout master
+Switched to branch 'master'
+M       numbers.py
+(learn-env)
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ git merge cubes -m "merging cubes to master for merge lab"
+Already up to date.
+(learn-env)
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   numbers.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(learn-env)
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ git branch -d cubes
+Deleted branch cubes (was f8cf8bd).
+(learn-env)
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ ^C
+(learn-env)
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ git push origin master
+fatal: 'origin' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+(learn-env)
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ git remote add origin https://github.com/jaeminlee95/git_merge_lab.git
+(learn-env)
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ git push origin master
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 260 bytes | 260.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/jaeminlee95/git_merge_lab.git
+ * [new branch]      master -> master
+(learn-env)
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
