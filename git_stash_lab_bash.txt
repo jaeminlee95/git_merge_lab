@@ -1,0 +1,189 @@
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ nano numbers.py
+
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   numbers.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ git stash
+warning: in the working copy of 'numbers.py', LF will be replaced by CRLF the next time Git touches it
+Saved working directory and index state WIP on master: 98f56b2 third commit in master for merge lab
+
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ cat numbers.py
+for i in range(10): print(i**3)
+
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ git stash list
+stash@{0}: WIP on master: 98f56b2 third commit in master for merge lab
+
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ git stash show
+ numbers.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ git stash apply
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   numbers.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ nano numbers.py
+
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   numbers.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ git log --graph
+* commit 98f56b29bd20c1aad294c26d4c5e70ad16ed4cba (HEAD -> master, origin/master)
+| Author: Jaemin Lee <jaemilee@deloitte.com>
+| Date:   Fri Jul 29 17:15:33 2022 -0700
+|
+|     third commit in master for merge lab
+|
+* commit 729f7d8ea880a94d904731cad734d8fd2c8b681c
+| Author: Jaemin Lee <jaemilee@deloitte.com>
+| Date:   Fri Jul 29 17:09:30 2022 -0700
+|
+|     second commit in master for merge lab
+|
+* commit f8cf8bda579cfe10a28e61586d47368bbe597549
+  Author: Jaemin Lee <jaemilee@deloitte.com>
+  Date:   Fri Jul 29 16:59:28 2022 -0700
+
+      first commit in master for merge lab
+
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ git branch beta
+
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (master)
+$ git checkout beta
+Switched to branch 'beta'
+M       numbers.py
+
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (beta)
+$ nano numbers.py
+
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (beta)
+$ git status
+On branch beta
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   numbers.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (beta)
+$ git add --numbers.py
+error: unknown option `numbers.py'
+usage: git add [<options>] [--] <pathspec>...
+
+    -n, --dry-run         dry run
+    -v, --verbose         be verbose
+
+    -i, --interactive     interactive picking
+    -p, --patch           select hunks interactively
+    -e, --edit            edit current diff and apply
+    -f, --force           allow adding otherwise ignored files
+    -u, --update          update tracked files
+    --renormalize         renormalize EOL of tracked files (implies -u)
+    -N, --intent-to-add   record only the fact that the path will be added later
+    -A, --all             add changes from all tracked and untracked files
+    --ignore-removal      ignore paths removed in the working tree (same as --no-all)
+    --refresh             don't add, only refresh the index
+    --ignore-errors       just skip files which cannot be added because of errors
+    --ignore-missing      check if - even missing - files are ignored in dry run
+    --sparse              allow updating entries outside of the sparse-checkout cone
+    --chmod (+|-)x        override the executable bit of the listed files
+    --pathspec-from-file <file>
+                          read pathspec from file
+    --pathspec-file-nul   with --pathspec-from-file, pathspec elements are separated with NUL character
+
+
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (beta)
+$ git add --all
+
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (beta)
+$ git commit -m "first commit in beta for stash lab"
+[beta fbd1c14] first commit in beta for stash lab
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (beta)
+$ git stash apply
+Auto-merging numbers.py
+CONFLICT (content): Merge conflict in numbers.py
+On branch beta
+Unmerged paths:
+  (use "git restore --staged <file>..." to unstage)
+  (use "git add <file>..." to mark resolution)
+        both modified:   numbers.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (beta)
+$ nano numbers.py
+
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (beta)
+$ git status
+On branch beta
+Unmerged paths:
+  (use "git restore --staged <file>..." to unstage)
+  (use "git add <file>..." to mark resolution)
+        both modified:   numbers.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (beta)
+$ git add --all
+
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (beta)
+$ git commit -m "second commit in beta for stash lab"
+[beta 9e252c5] second commit in beta for stash lab
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (beta)
+$ git push origin beta
+Enumerating objects: 8, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (6/6), 656 bytes | 328.00 KiB/s, done.
+Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
+remote:
+remote: Create a pull request for 'beta' on GitHub by visiting:
+remote:      https://github.com/jaeminlee95/git_merge_lab/pull/new/beta
+remote:
+To https://github.com/jaeminlee95/git_merge_lab.git
+ * [new branch]      beta -> beta
+
+jaemilee@USLOSJAEMILEE5 MINGW64 ~/Documents/Flatiron/Module_2_Git_Bash/git_merge_lab (beta)
